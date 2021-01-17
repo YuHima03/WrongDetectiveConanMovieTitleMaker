@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>何か違う名探偵コナンの映画タイトルメーカー</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        let f = new FileReader();
+        f.readAsText("file:///C:/Users/uhima/Desktop/WEB/Wrong_Detective_Conan_Movie_Title_Maker/list.json");
+        let list_text = f.result;
+
+        let list = JSON.parse();
+        $("#gen_box > input[type='button']").on("click", function(){
+            
+        });
+    </script>
+</head>
+<body>
+    <main>
+        <div id="desc">
+            <h2>何か違う名探偵コナンの映画タイトルメーカー</h2>
+            <p>今までの名探偵コナンの映画のタイトルをもとにして、何かが違う映画タイトルを生成します</p>
+            <p class="small">24作品あってその中からランダムで選ぶので全部で576通りあります、意外と多い</p>
+        </div>
+        <div id="gen_box">
+            <input type="text" readonly value="" />
+            <input type="button" value="生成する"/>
+            <input type="file" />
+        </div>
+    </main>
+</body>
+</html>
