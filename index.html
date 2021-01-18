@@ -4,13 +4,144 @@
     <title>何か違う名探偵コナンの映画タイトルメーカー</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-        let f = new FileReader();
-        f.readAsText("file:///C:/Users/uhima/Desktop/WEB/Wrong_Detective_Conan_Movie_Title_Maker/list.json");
-        let list_text = f.result;
+        /*
+        $.getJSON("list.json", function(data){
+            let list = [];
 
-        let list = JSON.parse();
-        $("#gen_box > input[type='button']").on("click", function(){
-            
+            $.each(data, function(k, v){
+                list.push(v);
+            });
+        });
+        */
+
+        var list = [
+            {
+                "1st_half" : "時計じかけの",
+                "2nd_half" : "摩天楼",
+                "year" : 1997
+            },
+            {
+                "1st_half" : "14番目の",
+                "2nd_half" : "標的（ターゲット）",
+                "year" : 1998
+            },
+            {
+                "1st_half" : "世紀末の",
+                "2nd_half" : "魔術師",
+                "year" : 1999
+            },
+            {
+                "1st_half" : "瞳の中の",
+                "2nd_half" : "暗殺者",
+                "year": 2000
+            },
+            {
+                "1st_half" : "天国への",
+                "2nd_half" : "カウントダウン",
+                "year" : 2001
+            },
+            {
+                "1st_half" : "ベイカー街（ストリート）の",
+                "2nd_half" : "亡霊",
+                "year" : 2002
+            },
+            {
+                "1st_half" : "迷宮の",
+                "2nd_half" : "十字路（クロスロード）",
+                "year" : 2003
+            },
+            {
+                "1st_half" : "銀翼の",
+                "2nd_half" : "奇術師（マジシャン）",
+                "year" : 2004
+            },
+            {
+                "1st_half" : "水平線上の",
+                "2nd_half" : "陰謀（ストラテジー）",
+                "year" : 2005
+            },
+            {
+                "1st_half" : "探偵たちの",
+                "2nd_half" : "鎮魂歌（レクイエム）",
+                "year" : 2006
+            },
+            {
+                "1st_half" : "紺碧の",
+                "2nd_half" : "棺（ジョリー・ロジャー）",
+                "year" : 2007
+            },
+            {
+                "1st_half" : "戦慄の",
+                "2nd_half" : "楽譜（フルスコア）",
+                "year" : 2008
+            },
+            {
+                "1st_half" : "漆黒の",
+                "2nd_half" : "追跡者（チェイサー）",
+                "year" : 2009
+            },
+            {
+                "1st_half" : "天空の",
+                "2nd_half" : "難破船（ロスト・シップ）",
+                "year" : 2010
+            },
+            {
+                "1st_half" : "沈黙の",
+                "2nd_half" : "15分（クォーター）",
+                "year" : 2011
+            },
+            {
+                "1st_half" : "11人目の",
+                "2nd_half" : "ストライカー",
+                "year" : 2012
+            },
+            {
+                "1st_half" : "絶海の",
+                "2nd_half" : "探偵（プライベート・アイ）",
+                "year" : 2013
+            },
+            {
+                "1st_half" : "異次元の",
+                "2nd_half" : "狙撃手（スナイパー）",
+                "year" : 2014
+            },
+            {
+                "1st_half" : "業火の",
+                "2nd_half" : "向日葵",
+                "year" : 2015
+            },
+            {
+                "1st_half" : "純黒の",
+                "2nd_half" : "悪夢（ナイトメア）",
+                "year" : 2016
+            },
+            {
+                "1st_half" : "から紅の",
+                "2nd_half" : "恋歌（ラブレター）",
+                "year" : 2017
+            },
+            {
+                "1st_half" : "ゼロの",
+                "2nd_half" : "執行人",
+                "year" : 2018
+            },
+            {
+                "1st_half" : "紺青の",
+                "2nd_half" : "拳（フィスト）",
+                "year" : 2019
+            },
+            {
+                "1st_half" : "緋色の（ひいろの）",
+                "2nd_half" : "弾丸",
+                "year" : 2020
+            }
+        ];
+
+        $(document).on("click", "#gen_box  > input[type='button']", function(){
+            let f_st_num = Math.floor(Math.random() * 24);
+            let s_nd_num = Math.floor(Math.random() * 24);
+
+            document.querySelector("#gen_box > input[type='text']").attributes.value.value = list[f_st_num]['1st_half'] + list[s_nd_num]['2nd_half'];
         });
     </script>
 </head>
@@ -24,7 +155,6 @@
         <div id="gen_box">
             <input type="text" readonly value="" />
             <input type="button" value="生成する"/>
-            <input type="file" />
         </div>
     </main>
 </body>
