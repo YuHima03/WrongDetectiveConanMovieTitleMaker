@@ -137,28 +137,128 @@
             }
         ];
 
+        let gen_flag = false;
+        $(function(){
+
+        });
+
         $(document).on("click", "#gen_box  > input[type='button']", function(){
+            //乱数生成
             let f_st_num = Math.floor(Math.random() * 24);
             let s_nd_num = Math.floor(Math.random() * 24);
 
+            let detail_box = document.querySelector("#gen_box > .detail");
+
+            //初めて生成したとき
+            if(!gen_flag){
+                document.querySelector("#gen_box > input[type='button']").attributes.value.value = "再生成する";
+                detail_box.style.display = "block";
+                setTimeout(function(){
+                    detail_box.style.opacity = 1;
+                }, 10);
+                gen_flag = true;
+            }
+
+            //表示
             document.querySelector("#gen_box > input[type='text']").attributes.value.value = list[f_st_num]['1st_half'] + list[s_nd_num]['2nd_half'];
+            detail_box.getElementsByTagName("li")[0].textContent = list[f_st_num]['1st_half'] + list[f_st_num]['2nd_half'] + "(" + list[f_st_num]['year'] + "年)";
+            detail_box.getElementsByTagName("li")[1].textContent = list[s_nd_num]['1st_half'] + list[s_nd_num]['2nd_half'] + "(" + list[s_nd_num]['year'] + "年)";
         });
     </script>
     <style type="text/css">
+        body {
+            margin: 0 50px;
+            font-family: '游ゴシック', 'Yu Gothic', Arial;
+        }
+
+        #desc {
+            display: block;
+            text-align: center;
+            margin: 20px 25px;
+        }
+
         #gen_box {
             display: block;
             margin: 20px 50px;
+            margin-top: 40px;
             width: calc(100% - 100px);
         }
 
-            #gen_box > input {
+            #gen_box > * {
                 display: block;
-                margin: auto;
+                margin: 30px auto;
             }
 
             #gen_box > input:first-child {
-                width: 500px;
+                width: 80%;
+                font-size: 20px;
+                padding: 7px 20px;
+                text-align: center;
+                font-family: inherit;
+                font-weight: 500;
+                border: solid 1px lightgray;
+                border-radius: 5px;
+                transition: ease-out 150ms box-shadow, ease-out 150ms border-color;
+                outline: none;
             }
+
+                #gen_box > input:first-child:hover {
+                    border-color: silver;
+                }
+
+            #gen_box > input:hover {
+                    box-shadow: #f8f8f8 0 0 10px;
+            }
+
+            #gen_box > input:nth-child(2) {
+                background: #1bccaf;
+                color: white;
+                border: none;
+                padding: 5px 30px;
+                border-radius: 40px;
+                font-family: inherit;
+                font-size: 17px;
+                font-weight: 500;
+                outline: none;
+                transition: ease-out 150ms box-shadow, ease-out 100ms transform;
+            }
+
+                #gen_box > input:nth-child(2):hover {
+                    transform: scale(1.02);
+                    cursor: pointer;
+                }
+
+                #gen_box > input:nth-child(2):active {
+                    transform: scale(0.98);
+                }
+
+            #gen_box > .detail {
+                width: auto;
+                transition: ease-out 300ms opacity;
+            }
+
+                #gen_box > .detail > div {
+                    width: 80%;
+                    margin: auto;
+                    font-weight: 400;
+                    border: solid 1px lightgray;
+                    border-radius: 5px;
+                    padding: 10px;
+                    position: relative;
+                }
+
+                    #gen_box > .detail > div::before {
+                        display: block;
+                        content: "詳細";
+                        position: absolute;
+                        font-size: 14px;
+                        color: dimgray;
+                        top: calc(-0.5em - 4px);
+                        left: 1em;
+                        background: white;
+                        padding: 0 5px;
+                    }
+
     </style>
 </head>
 <body>
@@ -171,6 +271,14 @@
         <div id="gen_box">
             <input type="text" readonly value="" />
             <input type="button" value="生成する"/>
+            <div class="detail" style="display: none;opacity: 0;">
+                <div>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </main>
 </body>
