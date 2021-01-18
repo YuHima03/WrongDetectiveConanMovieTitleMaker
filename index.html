@@ -144,6 +144,22 @@
             document.querySelector("#gen_box > input[type='text']").attributes.value.value = list[f_st_num]['1st_half'] + list[s_nd_num]['2nd_half'];
         });
     </script>
+    <style type="text/css">
+        #gen_box {
+            display: block;
+            margin: 20px 50px;
+            width: calc(100% - 100px);
+        }
+
+            #gen_box > input {
+                display: block;
+                margin: auto;
+            }
+
+            #gen_box > input:first-child {
+                width: 500px;
+            }
+    </style>
 </head>
 <body>
     <main>
