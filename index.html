@@ -142,6 +142,10 @@
 
         });
 
+        function setHTMLTag(tag_name, text_content, option = ""){
+            return "<" + tag_name + " " + option + ">" + text_content + "</" + tag_name + ">";
+        }
+
         $(document).on("click", "#gen_box  > input[type='button']", function(){
             //乱数生成
             let f_st_num = Math.floor(Math.random() * 24);
@@ -160,9 +164,9 @@
             }
 
             //表示
-            document.querySelector("#gen_box > input[type='text']").attributes.value.value = list[f_st_num]['1st_half'] + list[s_nd_num]['2nd_half'];
-            detail_box.getElementsByTagName("li")[0].textContent = list[f_st_num]['1st_half'] + list[f_st_num]['2nd_half'] + "(" + list[f_st_num]['year'] + "年)";
-            detail_box.getElementsByTagName("li")[1].textContent = list[s_nd_num]['1st_half'] + list[s_nd_num]['2nd_half'] + "(" + list[s_nd_num]['year'] + "年)";
+            document.querySelector("#gen_box > input[type='text']").attributes.value.value = list[f_st_num]['1st_half'] + " " +list[s_nd_num]['2nd_half'];
+            detail_box.getElementsByTagName("li")[0].innerHTML = setHTMLTag("span", list[f_st_num]['1st_half']) + list[f_st_num]['2nd_half'] + " (" + list[f_st_num]['year'] + "年)";
+            detail_box.getElementsByTagName("li")[1].innerHTML = list[s_nd_num]['1st_half'] + setHTMLTag("span", list[s_nd_num]['2nd_half']) + " (" + list[s_nd_num]['year'] + "年)";
         });
     </script>
     <style type="text/css">
@@ -238,6 +242,7 @@
             }
 
                 #gen_box > .detail > div {
+                    color: #505050;
                     width: 80%;
                     margin: auto;
                     font-weight: 400;
@@ -246,6 +251,12 @@
                     padding: 10px;
                     position: relative;
                 }
+
+                    #gen_box > .detail > div > ul > li > span {
+                        color: black;
+                        font-weight: 500;
+                        text-decoration: underline;
+                    }
 
                     #gen_box > .detail > div::before {
                         display: block;
