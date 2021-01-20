@@ -3,6 +3,10 @@
 <head>
     <title>何か違う名探偵コナンの映画タイトルメーカー</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!--fontawesome-->
+    <script src="https://kit.fontawesome.com/0de8aba07d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <!--gen_script-->
     <script>
         /*
         $.getJSON("list.json", function(data){
@@ -146,10 +150,11 @@
             return "<" + tag_name + " " + option + ">" + text_content + "</" + tag_name + ">";
         }
 
+        let f_st_num, s_nd_num;
         $(document).on("click", "#gen_box  > input[type='button']", function(){
             //乱数生成
-            let f_st_num = Math.floor(Math.random() * 24);
-            let s_nd_num = Math.floor(Math.random() * 24);
+            f_st_num = Math.floor(Math.random() * 24);
+            s_nd_num = Math.floor(Math.random() * 24);
 
             let detail_box = document.querySelector("#gen_box > .detail");
 
@@ -157,6 +162,7 @@
             if(!gen_flag){
                 document.querySelector("#gen_box > input[type='button']").attributes.value.value = "再生成する";
                 detail_box.style.display = "block";
+                document.querySelector("#msg").style.display = 'block';
                 setTimeout(function(){
                     detail_box.style.opacity = 1;
                 }, 10);
@@ -171,11 +177,21 @@
             //揃ったとき
             if(f_st_num === s_nd_num){
                 document.querySelector("#gen_box > input:first-child").classList.add("match");
-                document.querySelector("#match_msg").style.display = 'block';
+                document.querySelector("#msg > .match_msg").style.display = 'block';
             }
             else{
                 document.querySelector("#gen_box > input:first-child").classList.remove("match");
-                document.querySelector("#match_msg").style.display = 'none';
+                document.querySelector("#msg > .match_msg").style.display = 'none';
+            }
+
+            //共有用
+            let share_tw_link = "https://twitter.com/intent/tweet?text=" + "映画・名探偵コナン「" + list[f_st_num]['1st_half'] + list[s_nd_num]['2nd_half'] + "」%0D現在公開...しておりません！%0D" + "&url=" + "https://yuhima.net/tools/WrongDetectiveConanMovieTitleMaker";
+            document.querySelector("#msg > .share > a:nth-child(2)").setAttribute("href", share_tw_link);
+        });
+
+        $(document).on("click", "#msg > .share > i:nth-child(3)", function(e){
+            if(navigator.clipboard){
+                navigator.clipboard.writeText("映画・名探偵コナン「" + list[f_st_num]['1st_half'] + list[s_nd_num]['2nd_half'] + "」\n現在公開...しておりません！\n" + "https://yuhima.net/tools/WrongDetectiveConanMovieTitleMaker");
             }
         });
     </script>
@@ -305,13 +321,66 @@
                         padding: 0 5px;
                     }
 
-            #match_msg {
+            #msg {
                 display: none;
                 text-align: center;
-                color: #359eff;
-                font-weight: 600;
-                font-size: 18px;
             }
+
+                #msg > .match_msg {
+                    color: #359eff;
+                    font-weight: 600;
+                    font-size: 18px;
+                }
+
+                #msg > .share {
+                    display: block;
+                    position: flex;
+                    margin: 0 auto;
+                }
+
+                    #msg > .share > *{
+                        display: inline-block;
+                    }
+
+                    #msg > .share > p:first-child {
+                        font-weight: 500;
+                        color: gray;
+                    }
+
+                    #msg > .share > *:not(:first-child) {
+                        width: 35px;
+                        height: 35px;
+                        font-size: 20px;
+                        border-radius: 100px;
+                        transition: 100ms ease-out background, 150ms ease-out transform;
+                        vertical-align: middle;
+                    }
+
+                        #msg > .share > *:not(:first-child):hover {
+                            cursor: pointer;
+                            transform: scale(1.07);
+                        }
+
+                        #msg > .share > *:not(:first-child):active {
+                            transform: scale(0.93);
+                        }
+
+                    #msg > .share > a:nth-child(2) {
+                        color: #1da1f2;
+                    }
+
+                        #msg > .share > a:nth-child(2):hover {
+                            background: rgb(195, 235, 248);
+                        }
+
+                    #msg > .share > i:nth-child(3) {
+                        color: dimgray;
+                        line-height: 1.5em;
+                    }
+
+                        #msg > .share > i:nth-child(3):hover {
+                            background: gainsboro;
+                        }
 
     </style>
 </head>
@@ -324,8 +393,15 @@
         </div>
         <div id="gen_box">
             <input type="text" readonly value="" />
-            <div id="match_msg">
-                <p>おめ！実在するタイトルだ！</p>
+            <div id="msg">
+                <div class="match_msg">
+                    <p>おめ！実在するタイトルだ！</p>
+                </div>
+                <div class="share">
+                    <p>シェアしよう！</p>
+                    <a href="" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <i class="fas fa-copy"></i>
+                </div>
             </div>
             <input type="button" value="生成する"/>
             <div class="detail" style="display: none;opacity: 0;">
