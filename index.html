@@ -167,12 +167,23 @@
             document.querySelector("#gen_box > input[type='text']").attributes.value.value = list[f_st_num]['1st_half'] + " " +list[s_nd_num]['2nd_half'];
             detail_box.getElementsByTagName("li")[0].innerHTML = setHTMLTag("span", list[f_st_num]['1st_half']) + list[f_st_num]['2nd_half'] + " (" + list[f_st_num]['year'] + "年)";
             detail_box.getElementsByTagName("li")[1].innerHTML = list[s_nd_num]['1st_half'] + setHTMLTag("span", list[s_nd_num]['2nd_half']) + " (" + list[s_nd_num]['year'] + "年)";
+
+            //揃ったとき
+            if(f_st_num === s_nd_num){
+                document.querySelector("#gen_box > input:first-child").classList.add("match");
+                document.querySelector("#match_msg").style.display = 'block';
+            }
+            else{
+                document.querySelector("#gen_box > input:first-child").classList.remove("match");
+                document.querySelector("#match_msg").style.display = 'none';
+            }
         });
     </script>
     <style type="text/css">
         body {
             margin: 0 50px;
             font-family: '游ゴシック', 'Yu Gothic', Arial;
+            box-sizing: border-box;
         }
 
         #desc {
@@ -202,11 +213,25 @@
                 font-weight: 500;
                 border: solid 1px lightgray;
                 border-radius: 5px;
-                transition: ease-out 150ms box-shadow, ease-out 150ms border-color;
+                transition: ease-out 150ms box-shadow, ease-out 150ms border-color, ease-out 150ms border;
                 outline: none;
             }
 
-                #gen_box > input:first-child:hover {
+                #gen_box > input:first-child.match {
+                    border: solid 2px#359eff;
+                    animation: 1s bg ease-out;
+                }
+
+                @keyframes bg {
+                    0%{
+                        background: #e2f1ff;
+                    }
+                    100%{
+                        background: transparent;
+                    }
+                }
+
+                #gen_box > input:first-child:not(.match):hover {
                     border-color: silver;
                 }
 
@@ -214,7 +239,7 @@
                     box-shadow: #f8f8f8 0 0 10px;
             }
 
-            #gen_box > input:nth-child(2) {
+            #gen_box > input:nth-child(3) {
                 background: #1bccaf;
                 color: white;
                 border: none;
@@ -227,23 +252,28 @@
                 transition: ease-out 150ms box-shadow, ease-out 100ms transform;
             }
 
-                #gen_box > input:nth-child(2):hover {
+                #gen_box > input:nth-child(3):hover {
                     transform: scale(1.02);
                     cursor: pointer;
                 }
 
-                #gen_box > input:nth-child(2):active {
+                #gen_box > input:nth-child(3):active {
                     transform: scale(0.98);
                 }
 
             #gen_box > .detail {
+                display: block;
                 width: auto;
-                transition: ease-out 300ms opacity;
+                transition: ease-out 300ms opacity, ease-out 200ms width;
+                text-align: center;
             }
 
                 #gen_box > .detail > div {
+                    display: inline-block;
+                }
+
+                #gen_box > .detail > div {
                     color: #505050;
-                    width: 80%;
                     margin: auto;
                     font-weight: 400;
                     border: solid 1px lightgray;
@@ -251,6 +281,11 @@
                     padding: 10px;
                     position: relative;
                 }
+
+                    #gen_box > .detail > div > ul {
+                        padding-right: 20px;
+                        text-align: left;
+                    }
 
                     #gen_box > .detail > div > ul > li > span {
                         color: black;
@@ -270,6 +305,14 @@
                         padding: 0 5px;
                     }
 
+            #match_msg {
+                display: none;
+                text-align: center;
+                color: #359eff;
+                font-weight: 600;
+                font-size: 18px;
+            }
+
     </style>
 </head>
 <body>
@@ -281,12 +324,15 @@
         </div>
         <div id="gen_box">
             <input type="text" readonly value="" />
+            <div id="match_msg">
+                <p>おめ！実在するタイトルだ！</p>
+            </div>
             <input type="button" value="生成する"/>
             <div class="detail" style="display: none;opacity: 0;">
                 <div>
                     <ul>
-                        <li></li>
-                        <li></li>
+                        <li>前半部分に使われたタイトル</li>
+                        <li>後半部分に使われたタイトル</li>
                     </ul>
                 </div>
             </div>
