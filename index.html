@@ -1,201 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
+    <meta charset="utf8" />
     <title>何か違う名探偵コナンの映画タイトルメーカー</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!--fontawesome-->
     <script src="https://kit.fontawesome.com/0de8aba07d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
-    <!--gen_script-->
-    <script>
-        /*
-        $.getJSON("list.json", function(data){
-            let list = [];
-
-            $.each(data, function(k, v){
-                list.push(v);
-            });
-        });
-        */
-
-        var list = [
-            {
-                "1st_half" : "時計じかけの",
-                "2nd_half" : "摩天楼",
-                "year" : 1997
-            },
-            {
-                "1st_half" : "14番目の",
-                "2nd_half" : "標的（ターゲット）",
-                "year" : 1998
-            },
-            {
-                "1st_half" : "世紀末の",
-                "2nd_half" : "魔術師",
-                "year" : 1999
-            },
-            {
-                "1st_half" : "瞳の中の",
-                "2nd_half" : "暗殺者",
-                "year": 2000
-            },
-            {
-                "1st_half" : "天国への",
-                "2nd_half" : "カウントダウン",
-                "year" : 2001
-            },
-            {
-                "1st_half" : "ベイカー街（ストリート）の",
-                "2nd_half" : "亡霊",
-                "year" : 2002
-            },
-            {
-                "1st_half" : "迷宮の",
-                "2nd_half" : "十字路（クロスロード）",
-                "year" : 2003
-            },
-            {
-                "1st_half" : "銀翼の",
-                "2nd_half" : "奇術師（マジシャン）",
-                "year" : 2004
-            },
-            {
-                "1st_half" : "水平線上の",
-                "2nd_half" : "陰謀（ストラテジー）",
-                "year" : 2005
-            },
-            {
-                "1st_half" : "探偵たちの",
-                "2nd_half" : "鎮魂歌（レクイエム）",
-                "year" : 2006
-            },
-            {
-                "1st_half" : "紺碧の",
-                "2nd_half" : "棺（ジョリー・ロジャー）",
-                "year" : 2007
-            },
-            {
-                "1st_half" : "戦慄の",
-                "2nd_half" : "楽譜（フルスコア）",
-                "year" : 2008
-            },
-            {
-                "1st_half" : "漆黒の",
-                "2nd_half" : "追跡者（チェイサー）",
-                "year" : 2009
-            },
-            {
-                "1st_half" : "天空の",
-                "2nd_half" : "難破船（ロスト・シップ）",
-                "year" : 2010
-            },
-            {
-                "1st_half" : "沈黙の",
-                "2nd_half" : "15分（クォーター）",
-                "year" : 2011
-            },
-            {
-                "1st_half" : "11人目の",
-                "2nd_half" : "ストライカー",
-                "year" : 2012
-            },
-            {
-                "1st_half" : "絶海の",
-                "2nd_half" : "探偵（プライベート・アイ）",
-                "year" : 2013
-            },
-            {
-                "1st_half" : "異次元の",
-                "2nd_half" : "狙撃手（スナイパー）",
-                "year" : 2014
-            },
-            {
-                "1st_half" : "業火の",
-                "2nd_half" : "向日葵",
-                "year" : 2015
-            },
-            {
-                "1st_half" : "純黒の",
-                "2nd_half" : "悪夢（ナイトメア）",
-                "year" : 2016
-            },
-            {
-                "1st_half" : "から紅の",
-                "2nd_half" : "恋歌（ラブレター）",
-                "year" : 2017
-            },
-            {
-                "1st_half" : "ゼロの",
-                "2nd_half" : "執行人",
-                "year" : 2018
-            },
-            {
-                "1st_half" : "紺青の",
-                "2nd_half" : "拳（フィスト）",
-                "year" : 2019
-            },
-            {
-                "1st_half" : "緋色の（ひいろの）",
-                "2nd_half" : "弾丸",
-                "year" : 2020
-            }
-        ];
-
-        let gen_flag = false;
-        $(function(){
-
-        });
-
-        function setHTMLTag(tag_name, text_content, option = ""){
-            return "<" + tag_name + " " + option + ">" + text_content + "</" + tag_name + ">";
+    <style type="text/css">
+        ::selection {
+            background: rgba(165, 224, 243, 0.8);
         }
 
-        let f_st_num, s_nd_num;
-        $(document).on("click", "#gen_box  > input[type='button']", function(){
-            //乱数生成
-            f_st_num = Math.floor(Math.random() * 24);
-            s_nd_num = Math.floor(Math.random() * 24);
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cfcfcf;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #bfbfbf
+        }
+        ::-webkit-scrollbar-thumb:active {
+            background: #9f9f9f;
+        }
 
-            let detail_box = document.querySelector("#gen_box > .detail");
-
-            //初めて生成したとき
-            if(!gen_flag){
-                document.querySelector("#gen_box > input[type='button']").attributes.value.value = "再生成する";
-                detail_box.style.display = "block";
-                document.querySelector("#msg").style.display = 'block';
-                setTimeout(function(){
-                    detail_box.style.opacity = 1;
-                }, 10);
-                gen_flag = true;
-            }
-
-            //表示
-            document.querySelector("#gen_box > input[type='text']").attributes.value.value = list[f_st_num]['1st_half'] + " " +list[s_nd_num]['2nd_half'];
-            detail_box.getElementsByTagName("li")[0].innerHTML = setHTMLTag("span", list[f_st_num]['1st_half']) + list[f_st_num]['2nd_half'] + " (" + list[f_st_num]['year'] + "年)";
-            detail_box.getElementsByTagName("li")[1].innerHTML = list[s_nd_num]['1st_half'] + setHTMLTag("span", list[s_nd_num]['2nd_half']) + " (" + list[s_nd_num]['year'] + "年)";
-
-            //揃ったとき
-            if(f_st_num === s_nd_num){
-                document.querySelector("#gen_box > input:first-child").classList.add("match");
-                document.querySelector("#msg > .match_msg").style.display = 'block';
-            }
-            else{
-                document.querySelector("#gen_box > input:first-child").classList.remove("match");
-                document.querySelector("#msg > .match_msg").style.display = 'none';
-            }
-
-            //共有用
-            let share_tw_link = "https://twitter.com/intent/tweet?text=" + "映画・名探偵コナン「" + list[f_st_num]['1st_half'] + list[s_nd_num]['2nd_half'] + "」%0D現在公開...しておりません！%0D" + "&url=" + "https://yuhima.net/tools/WrongDetectiveConanMovieTitleMaker";
-            document.querySelector("#msg > .share > a:nth-child(2)").setAttribute("href", share_tw_link);
-        });
-
-        $(document).on("click", "#msg > .share > i:nth-child(3)", function(e){
-            if(navigator.clipboard){
-                navigator.clipboard.writeText("映画・名探偵コナン「" + list[f_st_num]['1st_half'] + list[s_nd_num]['2nd_half'] + "」\n現在公開...しておりません！\n" + "https://yuhima.net/tools/WrongDetectiveConanMovieTitleMaker");
-            }
-        });
-    </script>
-    <style type="text/css">
         body {
             margin: 0 50px;
             font-family: '游ゴシック', 'Yu Gothic', Arial;
@@ -321,66 +155,79 @@
                         padding: 0 5px;
                     }
 
-            #msg {
-                display: none;
-                text-align: center;
+        #msg {
+            display: none;
+            text-align: center;
+        }
+
+            #msg > .match_msg {
+                color: #359eff;
+                font-weight: 600;
+                font-size: 18px;
             }
 
-                #msg > .match_msg {
-                    color: #359eff;
-                    font-weight: 600;
-                    font-size: 18px;
+            #msg > .share {
+                display: block;
+                position: flex;
+                margin: 0 auto;
+            }
+
+                #msg > .share > *{
+                    display: inline-block;
                 }
 
-                #msg > .share {
-                    display: block;
-                    position: flex;
-                    margin: 0 auto;
+                #msg > .share > p:first-child {
+                    font-weight: 500;
+                    color: gray;
                 }
 
-                    #msg > .share > *{
-                        display: inline-block;
+                #msg > .share > *:not(:first-child) {
+                    width: 35px;
+                    height: 35px;
+                    font-size: 20px;
+                    border-radius: 100px;
+                    transition: 100ms ease-out background, 150ms ease-out transform;
+                    vertical-align: middle;
+                }
+
+                    #msg > .share > *:not(:first-child):hover {
+                        cursor: pointer;
+                        transform: scale(1.07);
                     }
 
-                    #msg > .share > p:first-child {
-                        font-weight: 500;
-                        color: gray;
+                    #msg > .share > *:not(:first-child):active {
+                        transform: scale(0.93);
                     }
 
-                    #msg > .share > *:not(:first-child) {
-                        width: 35px;
-                        height: 35px;
-                        font-size: 20px;
-                        border-radius: 100px;
-                        transition: 100ms ease-out background, 150ms ease-out transform;
-                        vertical-align: middle;
+                #msg > .share > a:nth-child(2) {
+                    color: #1da1f2;
+                }
+
+                    #msg > .share > a:nth-child(2):hover {
+                        background: rgb(195, 235, 248);
                     }
 
-                        #msg > .share > *:not(:first-child):hover {
-                            cursor: pointer;
-                            transform: scale(1.07);
-                        }
+                #msg > .share > i:nth-child(3) {
+                    color: dimgray;
+                    line-height: 1.5em;
+                }
 
-                        #msg > .share > *:not(:first-child):active {
-                            transform: scale(0.93);
-                        }
-
-                    #msg > .share > a:nth-child(2) {
-                        color: #1da1f2;
+                    #msg > .share > i:nth-child(3):hover {
+                        background: gainsboro;
                     }
 
-                        #msg > .share > a:nth-child(2):hover {
-                            background: rgb(195, 235, 248);
-                        }
+        #complete_per {
+            display: block;
+        }
 
-                    #msg > .share > i:nth-child(3) {
-                        color: dimgray;
-                        line-height: 1.5em;
-                    }
-
-                        #msg > .share > i:nth-child(3):hover {
-                            background: gainsboro;
-                        }
+            #complete_per > .bar {
+                display: block;
+                margin-left: 10%;
+                width: 80%;
+                height: 5px;
+                background: rgb(33, 159, 218);
+                border-radius: 5px;
+            }
 
     </style>
 </head>
@@ -414,5 +261,78 @@
             </div>
         </div>
     </main>
+    <!--script-->
+    <script>
+        let list = {}
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "./list.json");
+        xhr.send();
+        xhr.addEventListener("readystatechange", event => {
+            if(xhr.status === 200 && xhr.readyState === 4){
+                list = JSON.parse(xhr.responseText);
+            }
+        });
+
+        let gen_flag = false;
+        let completed_flag = {};
+        let completed_num = 0;
+        let comp_cookie_str = "";
+
+        function setHTMLTag(tag_name, text_content, option = ""){
+            return "<" + tag_name + " " + option + ">" + text_content + "</" + tag_name + ">";
+        }
+
+        let f_st_num, s_nd_num;
+        $(document).on("click", "#gen_box  > input[type='button']", function(){
+            //乱数生成
+            f_st_num = Math.floor(Math.random() * 24);
+            s_nd_num = Math.floor(Math.random() * 24);
+
+            let detail_box = document.querySelector("#gen_box > .detail");
+
+            //初めて生成したとき
+            if(!gen_flag){
+                document.querySelector("#gen_box > input[type='button']").attributes.value.value = "再生成する";
+                detail_box.style.display = "block";
+                document.querySelector("#msg").style.display = 'block';
+                setTimeout(function(){
+                    detail_box.style.opacity = 1;
+                }, 10);
+                gen_flag = true;
+            }
+
+            //表示
+            document.querySelector("#gen_box > input[type='text']").attributes.value.value = list[f_st_num]['1st_half'] + " " +list[s_nd_num]['2nd_half'];
+            detail_box.getElementsByTagName("li")[0].innerHTML = setHTMLTag("span", list[f_st_num]['1st_half']) + list[f_st_num]['2nd_half'] + " (" + list[f_st_num]['year'] + "年)";
+            detail_box.getElementsByTagName("li")[1].innerHTML = list[s_nd_num]['1st_half'] + setHTMLTag("span", list[s_nd_num]['2nd_half']) + " (" + list[s_nd_num]['year'] + "年)";
+
+            //揃ったとき
+            if(f_st_num === s_nd_num){
+                document.querySelector("#gen_box > input:first-child").classList.add("match");
+                document.querySelector("#msg > .match_msg").style.display = 'block';
+            }
+            else{
+                document.querySelector("#gen_box > input:first-child").classList.remove("match");
+                document.querySelector("#msg > .match_msg").style.display = 'none';
+            }
+
+            //共有用
+            let share_tw_link = "https://twitter.com/intent/tweet?text=" + "映画・名探偵コナン「" + list[f_st_num]['1st_half'] + list[s_nd_num]['2nd_half'] + "」%0D現在公開...しておりません！" + ((f_st_num === s_nd_num) ? ((list[f_st_num].year >= 2021) ? "が、今後公開される予定です！" : "が、以前公開されてました！") : "") +"%0D" + "&url=" + "https://yuhima.net/tools/WrongDetectiveConanMovieTitleMaker";
+            document.querySelector("#msg > .share > a:nth-child(2)").setAttribute("href", share_tw_link);
+        });
+
+        $(document).on("click", "#msg > .share > i:nth-child(3)", function(e){
+            if(navigator.clipboard){
+                navigator.clipboard.writeText("映画・名探偵コナン「" + list[f_st_num]['1st_half'] + list[s_nd_num]['2nd_half'] + "」\n現在公開...しておりません！\n" + "https://yuhima.net/tools/WrongDetectiveConanMovieTitleMaker");
+            }
+        });
+
+        if(navigator.userAgent.match(/Mobile/)){
+            document.body.classList.add("mobile");
+        }
+        else{
+            document.body.classList.add("pc");
+        }
+    </script>
 </body>
 </html>
